@@ -21,12 +21,6 @@ function App() {
       <Navbar isScrolled={isScrolled} />
       <SideMenu isScrolled={isScrolled} />
       <Hero />
-
-      <section>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, aliquid corrupti optio odit iste assumenda corporis facilis voluptates nostrum expedita. Consequuntur aliquam incidunt odio provident magni, labore officiis non aliquid.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, aliquid corrupti optio odit iste assumenda corporis facilis voluptates nostrum expedita. Consequuntur aliquam incidunt odio provident magni, labore officiis non aliquid.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, aliquid corrupti optio odit iste assumenda corporis facilis voluptates nostrum expedita. Consequuntur aliquam incidunt odio provident magni, labore officiis non aliquid.</p>
-      </section>
     </div>
   )
 }

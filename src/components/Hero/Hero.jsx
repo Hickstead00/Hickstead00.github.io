@@ -31,9 +31,9 @@ function Hero() {
             <span className="cursor">|</span>
           </p>
           <div className="description fade-in-delay">
-            <p>Après presque 9 ans passé dans le secteur de la restauration j'ai décidé de me lancer un nouveau défi.</p>
+            <p>Après presque 9 ans passé dans le secteur de la restauration j'ai décidé de me lancer un nouveau défi !</p>
             <p>Passionné par le monde de la tech, j'ai entrepris de reprendre mes études pour devenir développeur.</p>
-            <p>Aujourd'hui en 3ème année de MIAGE à l'Université d'Orléans, je suis exctremement motivé pour décrocher une alternance.</p>
+            <p>Aujourd'hui en 3ème année de MIAGE à l'Université d'Orléans, je suis extrêmement motivé pour décrocher une alternance.</p>
           </div>
         </div>
 
@@ -61,12 +61,6 @@ function Hero() {
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="hero-bg-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
       </div>
     </section>
   )

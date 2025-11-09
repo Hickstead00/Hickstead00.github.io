@@ -48,6 +48,10 @@
   margin: 0;
 }
 
+.hero-left .description p {
+  margin-bottom: 1.5rem;
+}
+
 
 .hero-right {
   display: flex;
@@ -123,7 +127,6 @@
   transform: translateY(-3px);
 }
 
-/* Boutons */
 .hero-buttons {
   display: flex;
   flex-direction: column;
@@ -264,18 +267,6 @@
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(30px, -30px) rotate(120deg);
-  }
-  66% {
-    transform: translate(-20px, 20px) rotate(240deg);
-  }
-}
-
 .fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -298,51 +289,4 @@
   animation: blink 1s step-end infinite;
   margin-left: 2px;
   font-weight: 300;
-}
-
-
-.hero-bg-shapes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.03;
-  filter: blur(40px);
-}
-
-.shape-1 {
-  width: 400px;
-  height: 400px;
-  background: #65c999;
-  top: -100px;
-  right: -100px;
-  animation: float 20s infinite ease-in-out;
-}
-
-.shape-2 {
-  width: 300px;
-  height: 300px;
-  background: #979ca5;
-  bottom: -50px;
-  left: -50px;
-  animation: float 25s infinite ease-in-out reverse;
-}
-
-.shape-3 {
-  width: 250px;
-  height: 250px;
-  background: #65c999;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: float 30s infinite ease-in-out;
 }

@@ -1,4 +1,20 @@
 .app {
   min-height: 100vh;
   background-color: #11172ae6;
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(101, 201, 153, 0.30) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 60% 100% at 50% 50%, black 0%, transparent 50%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 100% at 50% 50%, black 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }

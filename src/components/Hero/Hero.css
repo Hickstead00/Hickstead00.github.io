@@ -1,10 +1,11 @@
-/* Section Hero */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
@@ -14,9 +15,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-/* Colonne gauche - Profil */
+
 .hero-left {
   display: flex;
   flex-direction: column;
@@ -25,7 +28,7 @@
 
 .hero-left h1 {
   color: #979ca5;
-  font-size: 3.5rem;
+  font-size: 4.2rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.2;
@@ -33,19 +36,19 @@
 
 .hero-left .subtitle {
   color: #65c999;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 500;
   margin: 0;
 }
 
 .hero-left .description {
   color: #979ca5;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.7;
   margin: 0;
 }
 
-/* Colonne droite - Photo et liens */
+
 .hero-right {
   display: flex;
   flex-direction: column;
@@ -54,10 +57,17 @@
 }
 
 .profile-image {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
 }
 
 .image-placeholder {
@@ -68,20 +78,35 @@
   align-items: center;
   justify-content: center;
   color: #65c999;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
 }
 
-/* Liens sociaux */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(101, 201, 153, 0.2), rgba(17, 23, 42, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-image:hover .image-overlay {
+  opacity: 1;
+}
+
+
 .social-links {
   display: flex;
   gap: 1.5rem;
 }
 
 .social-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
   background: rgba(151, 156, 165, 0.1);
   display: flex;
   align-items: center;
@@ -89,7 +114,7 @@
   text-decoration: none;
   transition: all 0.3s ease;
   color: #979ca5;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .social-icon:hover {
@@ -102,17 +127,17 @@
 .hero-buttons {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
 }
 
 .btn {
-  padding: 0.9rem 1.5rem;
-  border-radius: 12px;
+  padding: 1.1rem 1.8rem;
+  border-radius: 14px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   text-align: center;
   transition: all 0.3s ease;
   border: none;
@@ -144,7 +169,7 @@
   transform: translateY(-2px);
 }
 
-/* Responsive */
+
 @media (max-width: 968px) {
   .hero-content {
     grid-template-columns: 1fr;
@@ -157,20 +182,20 @@
   }
 
   .hero-left h1 {
-    font-size: 2.8rem;
+    font-size: 3.4rem;
   }
 
   .hero-left .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
   .hero-left .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .profile-image {
-    width: 160px;
-    height: 160px;
+    width: 190px;
+    height: 190px;
   }
 }
 
@@ -180,29 +205,144 @@
   }
 
   .hero-left h1 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
   }
 
   .hero-left .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 
   .hero-left .description {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
 
   .profile-image {
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
   }
 
   .social-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
+    width: 54px;
+    height: 54px;
+    font-size: 1.5rem;
   }
 
   .hero-buttons {
     max-width: 100%;
   }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.8s forwards;
+}
+
+.fade-in-right {
+  animation: fadeInRight 1s ease-out 0.4s backwards;
+}
+
+
+.typing-effect {
+  min-height: 2.2rem;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
+}
+
+
+.hero-bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.03;
+  filter: blur(40px);
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: #65c999;
+  top: -100px;
+  right: -100px;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  background: #979ca5;
+  bottom: -50px;
+  left: -50px;
+  animation: float 25s infinite ease-in-out reverse;
+}
+
+.shape-3 {
+  width: 250px;
+  height: 250px;
+  background: #65c999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float 30s infinite ease-in-out;
 }

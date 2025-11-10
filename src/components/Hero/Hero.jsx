@@ -54,7 +54,7 @@ function Hero() {
 
           <div className="hero-buttons">
             <a href="public/cv.pdf" download className="btn btn-primary">
-              Télécharger CV
+              Téléchargez mon CV
             </a>
             <a href="#contact" className="btn btn-secondary">
               Me contacter

@@ -39,7 +39,7 @@ function Hero() {
 
         <div className="hero-right fade-in-right">
           <div className="profile-image">
-            <div className="image-placeholder">Photo</div>
+            <img src="/p1.jpg" alt="Virgile Bodin" />
             <div className="image-overlay"></div>
           </div>
 
@@ -53,7 +53,7 @@ function Hero() {
           </div>
 
           <div className="hero-buttons">
-            <a href="/cv.pdf" download className="btn btn-primary">
+            <a href="public/cv.pdf" download className="btn btn-primary">
               Télécharger CV
             </a>
             <a href="#contact" className="btn btn-secondary">

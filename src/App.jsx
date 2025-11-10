@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import SideMenu from './components/SideMenu/SideMenu'
 import Hero from './components/Hero/Hero'
+import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
       <Navbar isScrolled={isScrolled} />
       <SideMenu isScrolled={isScrolled} />
       <Hero />
+      <Skills />
       <Projects />
     </div>
   )

@@ -3,6 +3,11 @@ import './Projects.css'
 import { FaGithub, FaStar, FaCodeBranch, FaCodeCommit } from 'react-icons/fa6'
 
 const customDescriptions = {
+    'Projet-django-semestre-5': 'Application web de gestion de consultations développée avec Django, permettant aux utilisateurs de créer, modifier et suivre leurs tâches efficacement',
+    'Darkest-Dungeon-Randomizer-App': 'Application de randomisation de loadouts, equipes et skills pour le jeu Darkest Dungeon, développée en JavaFX',
+    'beta-lecteur': 'Application de partages de manuscrits permettant de connecter auteurs et beta-lecteurs, développée avec le framework Spring Boot',
+    'Nand2Tetris': '#Licence 2ème Année#\nImplémentation complète d\'un ordinateur virtuel Nand2Tetris, incluant l\'assembleur, le compilateur et le système d\'exploitation, réalisée en Python',
+    'OthelloJava': '#Licence 2ème Année#\nJeu de Othello développé en Java avec une interface CLI, incluant un algorithme d\'IA utilisant la recherche minimax',
 }
 
 function Projects() {
@@ -11,16 +16,50 @@ function Projects() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('https://api.github.com/users/Hickstead00/repos?sort=updated&per_page=6')
-      .then(response => {
+    const CACHE_KEY = 'github_repos_cache'
+    const CACHE_DURATION = 24 * 60 * 60 * 1000
+
+    const checkCache = () => {
+      try {
+        const cached = localStorage.getItem(CACHE_KEY)
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached)
+          const now = Date.now()
+
+          if (now - timestamp < CACHE_DURATION) {
+            setRepos(data)
+            setLoading(false)
+            return true
+          }
+        }
+      } catch (e) {
+        console.error('Erreur lecture cache:', e)
+      }
+      return false
+    }
+
+    if (checkCache()) {
+      return
+    }
+
+    fetch('https://api.github.com/users/Hickstead00/repos?sort=updated&per_page=100')
+      .then(async response => {
         if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}))
+          if (response.status === 403 && errorData.message?.includes('rate limit')) {
+            throw new Error('Limite de requêtes API GitHub atteinte. Réessayez dans quelques minutes.')
+          }
           throw new Error('Erreur lors de la récupération des repos')
         }
         return response.json()
       })
       .then(async (data) => {
+        const portfolioRepos = data.filter(repo =>
+          repo.topics && repo.topics.includes('portfolio')
+        )
+
         const reposWithCommits = await Promise.all(
-          data.map(async (repo) => {
+          portfolioRepos.map(async (repo) => {
             try {
               const commitsResponse = await fetch(
                 `https://api.github.com/repos/Hickstead00/${repo.name}/commits?per_page=1`
@@ -39,10 +78,21 @@ function Projects() {
 
               return { ...repo, commitCount }
             } catch {
+
               return { ...repo, commitCount: 0 }
             }
           })
         )
+
+
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            data: reposWithCommits,
+            timestamp: Date.now()
+          }))
+        } catch (e) {
+          console.error('Erreur sauvegarde cache:', e)
+        }
 
         setRepos(reposWithCommits)
         setLoading(false)

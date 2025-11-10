@@ -20,12 +20,16 @@ function Navbar({ isScrolled }) {
       </nav>
 
       <button
-        className={`hamburger ${isScrolled ? 'hidden' : ''}`}
+        className={`hamburger ${isScrolled ? 'hidden' : ''} ${mobileMenuOpen ? 'active' : ''}`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Menu"
       >
         {mobileMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
+
+      {mobileMenuOpen && (
+        <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)} />
+      )}
 
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <a href="#home" onClick={handleLinkClick}>Accueil</a>

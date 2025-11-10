@@ -18,13 +18,18 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  background-color: #2a2e38;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: auto;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  color: #11172a;
+  color: #979ca5;
+  background-color: #2a2e38;
+  overscroll-behavior: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

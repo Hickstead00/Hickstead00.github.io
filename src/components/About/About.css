@@ -1,0 +1,346 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.timeline-section,
+.why-dev-section,
+.values-section,
+.internship-section {
+  margin-top: 4rem;
+}
+
+.timeline-section h3,
+.why-dev-section h3,
+.values-section h3 {
+  color: #65c999;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(101, 201, 153, 0.2), rgba(101, 201, 153, 0.6), rgba(101, 201, 153, 0.2));
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  text-align: right;
+  padding-right: 3rem;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  text-align: left;
+  padding-left: 3rem;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(101, 201, 153, 0.1);
+  border: 3px solid #65c999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #65c999;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item.active .timeline-icon {
+  background: #65c999;
+  color: #11172a;
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 20px rgba(101, 201, 153, 0.5);
+}
+
+.timeline-content {
+  flex: 1;
+  max-width: 45%;
+  background: rgba(151, 156, 165, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(151, 156, 165, 0.1);
+  transition: all 0.3s ease;
+  white-space: pre-line;
+}
+
+.timeline-item.active .timeline-content {
+  background: rgba(151, 156, 165, 0.08);
+  border-color: rgba(101, 201, 153, 0.3);
+  transform: scale(1.05);
+}
+
+.timeline-year {
+  color: #65c999;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h4 {
+  color: #979ca5;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  color: #626c7d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.why-dev-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(151, 156, 165, 0.05);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(151, 156, 165, 0.1);
+}
+
+.why-dev-content p {
+  color: #979ca5;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.why-dev-content p:last-child {
+  margin-bottom: 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: rgba(151, 156, 165, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(151, 156, 165, 0.1);
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(101, 201, 153, 0.3);
+  box-shadow: 0 8px 24px rgba(101, 201, 153, 0.15);
+}
+
+.value-card h4 {
+  color: #65c999;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.value-card p {
+  color: #626c7d;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.internship-section {
+  display: flex;
+  justify-content: center;
+}
+
+.internship-card {
+  background: linear-gradient(135deg, rgba(101, 201, 153, 0.1), rgba(101, 201, 153, 0.05));
+  border: 2px solid #65c999;
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.internship-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #65c999, transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.internship-icon {
+  font-size: 3rem;
+  color: #65c999;
+  margin-bottom: 1rem;
+}
+
+.internship-card h3 {
+  color: #65c999;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.internship-card p {
+  color: #979ca5;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.internship-card .location {
+  color: #626c7d;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: #65c999;
+  color: #11172a;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(101, 201, 153, 0.3);
+}
+
+.cta-btn:hover {
+  background: #5ab589;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(101, 201, 153, 0.4);
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    flex-direction: row !important;
+    padding-left: 80px;
+  }
+
+  .timeline-icon {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item.active .timeline-icon {
+    transform: translateX(-50%) scale(1.2);
+  }
+
+  .timeline-content {
+    max-width: 100%;
+    text-align: left !important;
+    padding: 1.5rem !important;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    padding: 1.5rem;
+  }
+
+  .why-dev-content {
+    padding: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 3rem 1.5rem;
+  }
+
+  .timeline-section h3,
+  .why-dev-section h3,
+  .values-section h3 {
+    font-size: 1.6rem;
+  }
+
+  .timeline-item {
+    padding-left: 70px;
+  }
+
+  .timeline-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .why-dev-content {
+    padding: 1.5rem;
+  }
+
+  .why-dev-content p {
+    font-size: 1rem;
+  }
+
+  .internship-card {
+    padding: 1.5rem;
+  }
+}

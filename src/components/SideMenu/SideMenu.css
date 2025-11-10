@@ -36,14 +36,8 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .side-menu {
-    right: 15px;
-    padding: 1rem 1.2rem;
-    gap: 1.2rem;
-  }
-
-  .side-menu a {
-    font-size: 0.95rem;
+    display: none;
   }
 }
